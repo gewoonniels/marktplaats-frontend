@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>{{artikel.naam}}</h1>
+<div mat-dialog-content style="display: flex; flex-direction: column;">
+<span>Soort: {{artikel.soort.toLocaleLowerCase()}}</span>
+<span>Categorie: {{artikel.categorie.toLocaleLowerCase()}}</span>
+<p style="margin-top: 5px;">{{artikel.omschrijving}}</p>
+<span>Prijs: €{{artikel.prijs}}</span>
+<button mat-button color="primary">Voeg toe aan winkelwagen</button>
+</div>

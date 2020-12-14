@@ -1,0 +1,25 @@
+<div class="wrapper">
+	<div class="container">
+		<h1>Welkom bij de vernieuwde marktplaats</h1>
+		
+		<form (ngSubmit)="login()" [formGroup]="loginForm">
+			<input type="text" formControlName="emailadres" placeholder="Gebruikersnaam">
+			<input type="password" formControlName="wachtwoord" placeholder="Wachtwoord">
+			<label *ngIf="showError">Gebruikersnaam of wachtwoord is fout</label>
+			<button type="submit" id="login-button">Login</button>
+		</form>
+	</div>
+	
+	<ul class="bg-bubbles">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
