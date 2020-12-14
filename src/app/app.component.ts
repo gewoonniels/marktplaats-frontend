@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from './service/auth.service';
+import { LoginService } from './service/login.service';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +10,10 @@ import { AuthService } from './service/auth.service';
 export class AppComponent {
   title = 'marktplaats-frontend';
 
-  constructor(private authService: AuthService, private router: Router){}
+  constructor(private loginService: LoginService, private router: Router){}
 
   logout(): void{
-    this.authService.logout();
+    this.loginService.logOut();
     this.router.navigate(["/login"]);
   }
 }

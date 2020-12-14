@@ -13,10 +13,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
+import { SellArticleComponent } from './components/sell-article/sell-article.component';
 
 let routes: Route[] = [
-  { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent }
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: 'sellArticle', component: SellArticleComponent, canActivate: [AuthGuard] }
 ];
 
 // canActivate: [AuthGuard]
@@ -27,7 +29,8 @@ let routes: Route[] = [
     LoginComponent,
     HomeComponent,
     ArticlecardComponent,
-    Dialog
+    Dialog,
+    SellArticleComponent
   ],
   imports: [
     BrowserModule,

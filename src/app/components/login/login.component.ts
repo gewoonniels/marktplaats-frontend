@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { AuthService } from 'src/app/service/auth.service';
 import { LoginService } from 'src/app/service/login.service';
 
 @Component({
@@ -21,28 +18,19 @@ export class LoginComponent implements OnInit {
 
     showError = false;
 
-  constructor(private loginService: LoginService, private router: Router, private AuthService: AuthService) { }
+  constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   login(){
-    console.log(this.loginForm.value);
-    this.loginService.login(this.loginForm.value).pipe(catchError(err => {
-      this.showError=true;
-      return throwError;
-    }))
-    .subscribe(data => {
-      if(data.status == 200){
-        this.transferToHome()
-        this.showError=false;
-      }
-    });
- }
-
- transferToHome(){
-  this.AuthService.login();
-  this.router.navigate([''])
+    this.loginService.login(this.loginForm.value);
+    this.loginService.loginEvent$.subscribe(data => {
+      data === true ? 
+      this.router.navigate([""]) : this.showError = false;
+      console.log(data);
+    }
+      );
  }
 
 }

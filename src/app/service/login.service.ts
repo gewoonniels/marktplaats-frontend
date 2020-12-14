@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Gebruiker } from '../models/Gebruiker';
-import { retry, catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +11,27 @@ export class LoginService {
 
   private url = 'http://localhost:9080/marktplaats_backend_war/resources/inlog';
 
-  constructor(private http: HttpClient) { }
+  loggedInUser = {} as Gebruiker;
 
-  login(G: Gebruiker){
-    return this.http.post<Gebruiker[]>(this.url, G, {observe: 'response'});
+  loginEvent$ = new Subject<boolean>();
+
+  constructor(private http: HttpClient, private router: Router) { }
+
+  login(g: Gebruiker){
+    this.http.post<Gebruiker>(`${this.url}`, g)
+      .subscribe(
+        data => {
+          this.loggedInUser = data;
+          this.loginEvent$.next(true);
+        },
+        error => {
+          console.log(error);
+        }
+      );
    }
+
+  logOut(){
+    this.loggedInUser = {} as Gebruiker;
+  }
 
 }

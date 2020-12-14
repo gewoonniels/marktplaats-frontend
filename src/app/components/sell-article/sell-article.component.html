@@ -1,0 +1,21 @@
+	<div class="container">
+        <div class="title"><h1>Artikel aanbieden</h1></div>
+		<form (ngSubmit)="sell()" [formGroup]="loginForm">
+            <input type="text" formControlName="naam" placeholder="naam">
+            <label>Kies een categorie</label>
+            <select formControlName="categorie">
+                <option value="HOBBY">Hobby</option>
+                <option value="MEUBILAIR">Meubilair</option>
+                <option value="BOEKEN">Boeken</option>
+                <option value="OVERIG">Overig</option>
+              </select>
+              <label>Kies een soort</label>
+              <select  formControlName="soort">
+                <option value="PRODUCT">Product</option>
+                <option value="DIENST">Dienst</option>
+              </select>
+            <input type="text" formControlName="omschrijving" placeholder="omschrijving">
+            <input type="text" formControlName="prijs" placeholder="prijs">
+			<button type="submit" id="login-button">Login</button>
+		</form>
+    </div>
