@@ -8,4 +8,5 @@ export interface Gebruiker {
     postcode: string;
     straat: string;
     woonplaats: string;
+    ID: number
 }

@@ -1,0 +1,25 @@
+<div class="body">
+    <div class="title"><h1>Winkelmand</h1></div>
+    <div *ngIf="winkelmand">
+    <table class="table">
+        <tr>
+        <th>Naam</th>
+        <th>Omschrijving</th>
+        <th>Prijs</th>
+        </tr>
+        <tr *ngFor="let artikel of winkelmand.artikelen">
+        <td>{{artikel.naam}}</td>
+        <td>{{artikel.omschrijving}}</td>
+        <td>{{artikel.prijs}}</td>
+        <td>
+        <button class="btn btn-danger" (click)="deleteArticle(artikel)">Delete</button>
+        </td>
+        </tr>
+        <tr>
+            <td>X</td>
+            <td>Totale prijs</td>
+            <td>{{getPrijs()}}</td>
+        </tr>
+    </table>
+    </div>
+</div>

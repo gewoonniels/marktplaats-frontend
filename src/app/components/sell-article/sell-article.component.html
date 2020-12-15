@@ -1,7 +1,8 @@
 	<div class="container">
-        <div class="title"><h1>Artikel aanbieden</h1></div>
+    <div class="title"><h1>Artikel aanbieden</h1></div>
 		<form (ngSubmit)="sell()" [formGroup]="loginForm">
-            <input type="text" formControlName="naam" placeholder="naam">
+            <label>Naam:</label>
+            <input type="text" formControlName="naam">
             <label>Kies een categorie</label>
             <select formControlName="categorie">
                 <option value="HOBBY">Hobby</option>
@@ -14,8 +15,10 @@
                 <option value="PRODUCT">Product</option>
                 <option value="DIENST">Dienst</option>
               </select>
-            <input type="text" formControlName="omschrijving" placeholder="omschrijving">
-            <input type="text" formControlName="prijs" placeholder="prijs">
-			<button type="submit" id="login-button">Login</button>
-		</form>
-    </div>
+            <label>Omschrijving:</label>
+            <textarea type="text" formControlName="omschrijving"></textarea>
+            <label>Prijs:</label>
+            <input type="text" formControlName="prijs">
+			<button type="submit" id="login-button" [disabled]="!loginForm.valid">Verkoop!</button>
+    </form>
+  </div>

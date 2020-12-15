@@ -27,8 +27,7 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.loginForm.value);
     this.loginService.loginEvent$.subscribe(data => {
       data === true ? 
-      this.router.navigate([""]) : this.showError = false;
-      console.log(data);
+      this.router.navigate([""]) : this.showError = true;
     }
       );
  }

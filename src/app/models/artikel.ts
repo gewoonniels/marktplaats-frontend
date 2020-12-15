@@ -2,6 +2,7 @@ export interface Artikel {
     categorie: String;
     naam: String;
     omschrijving: String;
-    prijs: Number;
-    soort: String
+    prijs: number;
+    soort: String;
+    id?:number;
 }

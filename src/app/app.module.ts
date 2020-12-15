@@ -14,11 +14,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
 import { SellArticleComponent } from './components/sell-article/sell-article.component';
+import { ShoppingcartComponent } from './components/shoppingcart/shoppingcart.component';
 
 let routes: Route[] = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
-  { path: 'sellArticle', component: SellArticleComponent, canActivate: [AuthGuard] }
+  { path: 'artikelaanbieden', component: SellArticleComponent, canActivate: [AuthGuard]},
+  { path: 'winkelmand', component: ShoppingcartComponent, canActivate: [AuthGuard]}
 ];
 
 // canActivate: [AuthGuard]
@@ -30,7 +32,8 @@ let routes: Route[] = [
     HomeComponent,
     ArticlecardComponent,
     Dialog,
-    SellArticleComponent
+    SellArticleComponent,
+    ShoppingcartComponent
   ],
   imports: [
     BrowserModule,

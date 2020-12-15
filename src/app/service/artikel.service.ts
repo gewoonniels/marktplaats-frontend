@@ -17,11 +17,15 @@ export class ArtikelService {
   getAll(){
     this.http.get<Artikel[]>(this.url) 
     .subscribe(
-      contacts => this.artikelUpdated$.next(contacts)
+      artikellen => this.artikelUpdated$.next(artikellen)
     );
-
     return this.artikelUpdated$;
    }
 
+  addArtikel(artikel: Artikel){
+    this.http.post<Artikel[]>(this.url, artikel) 
+    .subscribe(() => this.getAll()
+);
+  }
 
 }
