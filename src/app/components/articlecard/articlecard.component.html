@@ -1,5 +1,12 @@
 <mat-card>
     <mat-card-title>{{artikel.naam}}</mat-card-title>
     <mat-card-subtitle>{{artikel.categorie.toLocaleLowerCase()}} {{artikel.soort.toLocaleLowerCase()}}</mat-card-subtitle>
-    <button mat-raised-button (click)="openDialog()">Details</button>
-<mat-card>
+    <mat-card-content>
+        <p>
+          {{artikel.omschrijving}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button (click)="openDialog()" mat-button>Details</button>
+      </mat-card-actions>
+</mat-card>

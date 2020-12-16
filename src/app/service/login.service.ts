@@ -23,7 +23,6 @@ export class LoginService {
         data => {
           this.loggedInUser = data;
           this.loginEvent$.next(true);
-          console.log(this.loggedInUser);
         },
         error => {
           this.loginEvent$.next(false);
