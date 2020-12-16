@@ -16,13 +16,14 @@
         <td>€{{artikel.prijs}}</td>
 
         <td>
-        <button class="btn btn-danger" (click)="deleteArticle(artikel)">Delete</button>
+        <button class="btn btn-danger" (click)="deleteArticle(artikel)">Verwijder</button>
         </td>
         </tr>
         <tr>
             <td>X</td>
             <td>Totale prijs</td>
             <td>€{{getPrijs()}}</td>
+            <td><button class="btn btn-danger" (click)="buy()">Koop!</button></td>
         </tr>
     </table>
     </div>

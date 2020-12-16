@@ -1,0 +1,25 @@
+<div class="body">
+    <div class="title"><h1>Afrekenen</h1></div>
+    <form (ngSubmit)="pay()" [formGroup]="payForm">
+        <label>Kies een bezorgwijze</label>
+        <select formControlName="bezorgwijze">
+            <option value="MAGAZIJN">Afhalen magazijn</option>
+            <option value="AFHALEN">Afhalen bij verkoper</option>
+            <option value="VERZENDEN">Versturen</option>
+            <option value="REMBOURS">Versturen onder rembours</option>
+          </select>
+          <label >Kies een betalingwijze</label>
+          <select formControlName="betaalwijze">
+            <option value="CREDITCARD">Creditcard</option>
+            <option value="IDEAL">Ideal</option>
+            <option value="CONTANT">Contant</option>
+          </select>
+          <table>
+          <tr><td>Winkelmand kosten:</td> <td>€{{getPrijs()}}</td></tr>
+          <tr *ngIf="remboursSelected()"><td>Versturen onder rembours kosten {{winkelmand.artikelen.length}} X €7,50 : </td> <td>€{{winkelmand.artikelen.length * 7.50}}</td></tr>
+          <tr *ngIf="creditcardSelect()"><td>Betalen met creditcard kosten:</td> <td>€5</td></tr>
+          <tr><td>Totaal:</td> <td>€{{getTotalPrijs()}}</td></tr>
+            </table>
+        <button type="submit" id="login-button" [disabled]="!payForm.valid">Betaal!</button>
+</form>
+</div>

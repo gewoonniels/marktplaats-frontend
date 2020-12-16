@@ -26,7 +26,7 @@ export class ArtikelService {
   addArtikel(artikel: Artikel){
     this.http.post<Artikel[]>(`${this.url}/${this.loginService.loggedInUser.ID}`, artikel) 
     .subscribe(() => this.getAll()
-);
+    );
   }
 
 }
