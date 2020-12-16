@@ -15,12 +15,12 @@ export class ShoppingcartService {
 
   winkelmandUpdated$ = new Subject<Winkelmand>();
 
-  constructor(private http: HttpClient, private artikelService: ArtikelService) { }
+  constructor(private http: HttpClient, private artikelService: ArtikelService, private loginService: LoginService) { }
 
 
   getAll(){
-    // const url = `${this.uri}${this.loginService.loggedInUser.ID}`
-    const url = `${this.uri}${0}`
+    const url = `${this.uri}${this.loginService.loggedInUser.ID}`
+    // const url = `${this.uri}${0}`
 
     this.http.get<Winkelmand>(url) 
     .subscribe(
@@ -30,8 +30,8 @@ export class ShoppingcartService {
    }
 
   addArticleToShoppingCart(a: Artikel){
-    // const url = `${this.uri}${this.loginService.loggedInUser.ID}`
-    const url = `${this.uri}${0}`
+    const url = `${this.uri}${this.loginService.loggedInUser.ID}`
+    // const url = `${this.uri}${0}`
     this.http.post<Winkelmand>(url, a) 
     .subscribe(() => {
       this.getAll()
@@ -41,8 +41,8 @@ export class ShoppingcartService {
    }
 
    deleteArticleFromShoppinCart(a: Artikel){
-    // const url = `${this.uri}${this.loginService.loggedInUser.ID}`
-    const url = `${this.uri}${0}/${a.id}`
+    const url = `${this.uri}${this.loginService.loggedInUser.ID}/${a.id}`
+    // const url = `${this.uri}${0}/${a.id}`
     this.http.delete<Winkelmand>(url) 
     .subscribe(() => this.getAll());
     return this.winkelmandUpdated$;

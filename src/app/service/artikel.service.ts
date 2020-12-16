@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Artikel } from '../models/artikel';
+import { LoginService } from './login.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class ArtikelService {
 
   artikelUpdated$ = new Subject<Artikel[]>();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private loginService: LoginService) { }
 
   getAll(){
     this.http.get<Artikel[]>(this.url) 
@@ -23,7 +24,7 @@ export class ArtikelService {
    }
 
   addArtikel(artikel: Artikel){
-    this.http.post<Artikel[]>(this.url, artikel) 
+    this.http.post<Artikel[]>(`${this.url}/${this.loginService.loggedInUser.ID}`, artikel) 
     .subscribe(() => this.getAll()
 );
   }
